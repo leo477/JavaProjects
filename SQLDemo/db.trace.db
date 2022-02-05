@@ -1,0 +1,125 @@
+2022-02-05 11:32:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Неизвестный тип данных: "LOCALDATETIME"
+Unknown data type: "LOCALDATETIME"; SQL statement:
+CREATE TABLE IF NOT EXISTS share_rates(id BIGINT AUTO_INCREMENT PRIMARY KEY,operDate LOCALDATETIME NOT NULL,share_id  INTEGER NOT NULL,rate BIGDECIMAL (8,2) NOT NULL) [50004-210]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6234)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6075)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6057)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5932)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9360)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9298)
+	at org.h2.command.Parser.parseCreate(Parser.java:6779)
+	at org.h2.command.Parser.parsePrepared(Parser.java:746)
+	at org.h2.command.Parser.parse(Parser.java:674)
+	at org.h2.command.Parser.parse(Parser.java:644)
+	at org.h2.command.Parser.prepareCommand(Parser.java:551)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:615)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:553)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at sql.demo.repository.BaseTable.executeSqlStatement(BaseTable.java:33)
+	at sql.demo.repository.ShareRates.createTable(ShareRates.java:13)
+	at sql.demo.StockExchange.createTables(StockExchange.java:50)
+	at sql.demo.StockExchange.main(StockExchange.java:32)
+2022-02-05 11:32:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Неизвестный тип данных: "BIGDECIMAL"
+Unknown data type: "BIGDECIMAL"; SQL statement:
+CREATE TABLE IF NOT EXISTS share_rates(id BIGINT AUTO_INCREMENT PRIMARY KEY,operDate DATETIME NOT NULL,share_id  INTEGER NOT NULL,rate BIGDECIMAL (8,2) NOT NULL) [50004-210]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6234)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6075)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6057)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5932)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9360)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9298)
+	at org.h2.command.Parser.parseCreate(Parser.java:6779)
+	at org.h2.command.Parser.parsePrepared(Parser.java:746)
+	at org.h2.command.Parser.parse(Parser.java:674)
+	at org.h2.command.Parser.parse(Parser.java:644)
+	at org.h2.command.Parser.prepareCommand(Parser.java:551)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:615)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:553)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at sql.demo.repository.BaseTable.executeSqlStatement(BaseTable.java:33)
+	at sql.demo.repository.ShareRates.createTable(ShareRates.java:13)
+	at sql.demo.StockExchange.createTables(StockExchange.java:50)
+	at sql.demo.StockExchange.main(StockExchange.java:32)
+2022-02-05 11:33:02 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "ALTER TABLE traiders ADD CONSTRAINT check_traiders_traidingMethodCHECK[*](tradingMethod IN (1,2,3));"; ожидалось "., COMMENT, PRIMARY, UNIQUE, FOREIGN, CHECK"
+Syntax error in SQL statement "ALTER TABLE traiders ADD CONSTRAINT check_traiders_traidingMethodCHECK[*](tradingMethod IN (1,2,3));"; expected "., COMMENT, PRIMARY, UNIQUE, FOREIGN, CHECK"; SQL statement:
+ALTER TABLE traiders ADD CONSTRAINT check_traiders_traidingMethodCHECK(tradingMethod IN (1,2,3)); [42001-210]
+2022-02-05 11:37:52 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "TRADINGMETHOD" не найден
+Column "TRADINGMETHOD" not found; SQL statement:
+ALTER TABLE traiders ADD CONSTRAINT check_traiders_traidingMethod CHECK(tradingMethod IN (1,2,3)) [42122-210]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:248)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:230)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.condition.ConditionIn.optimize(ConditionIn.java:97)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:191)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at sql.demo.repository.BaseTable.executeSqlStatement(BaseTable.java:33)
+	at sql.demo.repository.Traiders.createTable(Traiders.java:22)
+	at sql.demo.StockExchange.createTables(StockExchange.java:52)
+	at sql.demo.StockExchange.main(StockExchange.java:32)
+2022-02-05 11:38:34 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "TRADINGMETHOD" не найден
+Column "TRADINGMETHOD" not found; SQL statement:
+ALTER TABLE traiders ADD CONSTRAINT check_traiders_traidingMethod CHECK(tradingMethod IN (1,2,3)) [42122-210]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:248)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:230)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.condition.ConditionIn.optimize(ConditionIn.java:97)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:191)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at sql.demo.repository.BaseTable.executeSqlStatement(BaseTable.java:33)
+	at sql.demo.repository.Traiders.createTable(Traiders.java:22)
+	at sql.demo.StockExchange.createTables(StockExchange.java:52)
+	at sql.demo.StockExchange.main(StockExchange.java:32)
+2022-02-05 11:40:25 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Ограничение "CHECK_TRAIDERS_TRAIDINGMETHOD" уже существует
+Constraint "CHECK_TRAIDERS_TRAIDINGMETHOD" already exists; SQL statement:
+ALTER TABLE traiders ADD CONSTRAINT check_traiders_traidingMethod CHECK(tradingMethod IN (1,2,3)) [90045-210]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:651)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:109)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at sql.demo.repository.BaseTable.executeSqlStatement(BaseTable.java:33)
+	at sql.demo.repository.Traiders.createTable(Traiders.java:22)
+	at sql.demo.StockExchange.createTables(StockExchange.java:52)
+	at sql.demo.StockExchange.main(StockExchange.java:32)
